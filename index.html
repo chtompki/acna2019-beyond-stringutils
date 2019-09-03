@@ -179,6 +179,37 @@ private static assumeAtLeast(JavaVersion version) {
         </section>
 
         <section>
+            <h3><code style="text-transform: none;">StrSubstitutor</code></h3>
+            <ul>
+                <li class="fragment">provides a convenient way to do string substitutions</li>
+                <li class="fragment">think of it as a template engine in a single class</li>
+            </ul>
+            <pre class="fragment"><code class="java">String replaced = StrSubstitutor.replaceSystemProperties(
+    "You are running with java.version = ${java.version}" +
+    " and os.name = ${os.name}.");</code></pre>
+        </section>
+
+        <section>
+            <h3><code style="text-transform: : none;">StrSubstitutor</code> custom substitutions</h3>
+            <pre class="fragment"><code class="java">Map<String, String> values = singletonMap("customKey", "some value");
+StrSubstitutor strSubstitutor = new StrSubstitutor(values);
+strSubstitutor.replace(
+    "Template with {customKey} and {another:-fallback value}");</code></pre>
+        </section>
+
+        <section>
+            <h1><code style="text-transform: none;">commons-fileupload</code></h1>
+        </section>
+
+        <section>
+            <h1><code style="text-transform: none;">commons-cli</code></h1>
+        </section>
+
+        <section>
+            <h1><code style="text-transform: none;">commons-dbcp</code></h1>
+        </section>
+
+        <section>
             <h2>Questions?</h2>
         </section>
     </div>
