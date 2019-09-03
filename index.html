@@ -34,7 +34,7 @@
 <div class="reveal">
     <div class="slides">
         <section>
-            <h1>Going Beyond <code>StringUtils</code></h1>
+            <h1>Going Beyond <code style="text-transform: none;">StringUtils</code></h1>
             <h4>A broader look at Apache Commons.</h4>
             <br>
                 <small>Created by
@@ -73,6 +73,7 @@
                 <li class="fragment">About Apache Commons</li>
                 <li class="fragment">Apache Commons Components</li>
                 <ul>
+                    <li class="fragment"><code>commons-lang</code></li>
                     <li class="fragment"><code>commons-text</code></li>
                     <li class="fragment"><code>commons-cli</code></li>
                     <li class="fragment"><code>commons-fileupload</code></li>
@@ -112,7 +113,69 @@
 
         <section>
             <h1>Components</h1>
-            <h3><code>commons-text</code></h3>
+            <h3><code style="text-transform: none;">commons-lang</code></h3>
+        </section>
+
+        <section>
+            <h3>Beyond <code style="text-transform: none;">StringUtils</code></h3>
+            <p>
+                <span class="fragment"><code>ArrayUtils</code>,</span>
+                <span class="fragment"><code>BooleanUtils</code>,</span>
+                <span class="fragment"><code>CharSetUtils</code>,</span>
+                <span class="fragment"><code>CharUtils</code>,</span>
+                <span class="fragment"><code>ClassPathUtils</code>,</span>
+                <span class="fragment"><code>DateFormatUtils</code>,</span>
+                <span class="fragment"><code>DateUtils</code>,</span>
+                <span class="fragment"><code>DurationFormatUtils</code>,</span>
+                <span class="fragment"><code>EnumUtils</code>,</span>
+                <span class="fragment"><code>ExceptionUtils</code>,</span>
+                <span class="fragment"><code>IEEE754rUtils</code>,</span>
+                <span class="fragment"><code>LocaleUtils</code>,</span>
+                <span class="fragment"><code>NumberUtils</code>,</span>
+                <span class="fragment"><code>ObjectUtils</code>,</span>
+                <span class="fragment"><code>RandomStringUtils</code>,</span>
+                <span class="fragment"><code>RandomUtils</code>,</span>
+                <span class="fragment"><code>SerializationUtils</code>,</span>
+                <span class="fragment"><code>SystemUtils</code>,</span>
+                <span class="fragment"><code>ThreadUtils</code>,</span>
+            </p>
+        </section>
+
+        <section>
+            <h3><code style="text-transform: none;">SystemUtils</code></h3>
+            <ul>
+                <li class="fragment">
+                    Easy access to Java system properties
+                    <pre class="fragment"><code class="java">boolean win10 = SystemUtils.IS_OS_WINDOWS_10;
+String javaHomePath = SystemUtils.JAVA_HOME;
+File javaHome = SystemUtils.getJavaHome();</code></pre>
+                </li>
+                <li class="fragment">
+                    Which Java Version am I running on?
+                    <pre class="fragment"><code class="java">SystemUtils
+  .isJavaVersionAtLeast(JavaVersion.JAVA_1_8);</code></pre>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Java version check for testing</h3>
+            <pre class="fragment"><code class="java">import static org.junit.Assume.assumeTrue;
+import static org.apache.commons.lang3.JavaVersion.JAVA_1_8;
+
+@Test
+public void java_version_specific_test() {
+    assumeAtLeast(JAVA_1_8);
+    // do something only possbile with Java 8+
+}
+
+private static assumeAtLeast(JavaVersion version) {
+    assumeTrue(SystemUtils.isJavaVersionAtLeast(version));
+}</code></pre>
+        </section>
+
+        <section>
+            <h1><code style="text-transform: none;">commons-text</code></h1>
         </section>
 
         <section>
