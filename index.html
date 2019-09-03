@@ -190,11 +190,24 @@ private static assumeAtLeast(JavaVersion version) {
         </section>
 
         <section>
-            <h3><code style="text-transform: : none;">StrSubstitutor</code> custom substitutions</h3>
-            <pre class="fragment"><code class="java">Map<String, String> values = singletonMap("customKey", "some value");
+            <h3><code style="text-transform: none;">StrSubstitutor</code> custom substitutions</h3>
+            <pre class="fragment"><code class="java">Map&lt;String, String&gt; values
+    = singletonMap("customKey", "some value");
 StrSubstitutor strSubstitutor = new StrSubstitutor(values);
 strSubstitutor.replace(
-    "Template with {customKey} and {another:-fallback value}");</code></pre>
+    "Template with ${customKey} and ${another:-fallback value}");
+</code></pre>
+        </section>
+
+        <section>
+            <h3><code style="text-transform: none;">StringEscapeUtils</code></h3>
+            <ul>
+                <li class="fragment">Provides a convenient way to do escaping</li>
+            </ul>
+            <pre class="fragment"><code class="java">StringEscapeUtils.escapeJson("He didn't say, \"stop!\"");
+// "He didn\\'t say, \\\"stop!\\\""
+StringEscapeUtils.escapeJava("\\\b\t\r");
+// "\\\\\\b\\t\\r" </code></pre>
         </section>
 
         <section>
@@ -203,6 +216,42 @@ strSubstitutor.replace(
 
         <section>
             <h1><code style="text-transform: none;">commons-cli</code></h1>
+        </section>
+
+        <section>
+            <h3>What I want:</h3>
+            <img src="./images/maven-cli.jpg" />
+        </section>
+
+        <section>
+            <h3>What Java gives me:</h3>
+            <pre class="fragment"><code class="java">public static void main(String[] args) {
+  if(args.length > 0) {
+    if("-help".equals(args[0])) {
+      printHelp()
+    }
+  }
+}</code></pre>
+        </section>
+
+        <section>
+            <h3>Defining <code style="text-transform: none;">commons-cli Options</code></h3>
+            <pre class="fragment"><code class="java">Options options = new Options()
+options.addOption("h", "help", false, "display the help");
+options.addOption(withArgName("file")
+                 .hasArg()
+                 .withDescription("use given file for log")
+                 .create("logfile"));</code></pre>
+        </section>
+
+        <section>
+            <h3>Parsing the Command Line</h3>
+            <pre class="fragment"><code class="java">CommandLine line = new DefaultParser().parse(options, args);
+if(line.hasOption("help")) {
+  new HelpFormatter().printHelp("cool-cli", options);
+} else if(line.hasOption("file")) {
+  this.logfile = line.getOptionValue("logfile");
+}</code></pre>
         </section>
 
         <section>
