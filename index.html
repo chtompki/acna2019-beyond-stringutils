@@ -215,6 +215,23 @@ StringEscapeUtils.escapeJava("\\\b\t\r");
         </section>
 
         <section>
+            <h3><code style="text-transform: none;">ServletFileUpload</code></h3>
+            <pre class="fragment"><code class="java">DiskFileItemFactory factory = new DiskFileItemFactory();
+// Configure a repository (to ensure a secure
+//temp location is used)
+ServletContext servletContext =
+            this.getServletConfig().getServletContext();
+File repository =
+            (File) servletContext
+            .getAttribute("javax.servlet.context.tempdir");
+factory.setRepository(repository);
+// Create a new file upload handler
+ServletFileUpload upload = new ServletFileUpload(factory);
+// Parse the request (HttpServletRequest request from doPost)
+List&gt;FileItem&lt; items = upload.parseRequest(request);</code></pre>
+        </section>
+
+        <section>
             <h1><code style="text-transform: none;">commons-cli</code></h1>
         </section>
 
@@ -256,6 +273,31 @@ if(line.hasOption("help")) {
 
         <section>
             <h1><code style="text-transform: none;">commons-dbcp</code></h1>
+        </section>
+
+        <section>
+            <h3><code style="text-transform: none;">BasicDataSource</code></h3>
+            <p class="fragment">Commonly used with <code>org.springframework.jdbc.core.JdbcTemplate</code>.</p>
+            <pre class="fragment"><code class="java">javax.sql.DataSource dataSource = new BasicDataSource();
+dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+dataSource.setUrl("jdbc:mysql://localhost:3306/emp");
+dataSource.setUsername("someUser");
+dataSource.setPassword("somePassword");
+dataSource.setInitialSize(5); //connection pool size
+</code></pre>
+        </section>
+
+        <section>
+            <h3>Other Components</h3>
+            <ul>
+                <li class="fragment"><code style="text-transform: none;">commons-codec</code></li>
+                <li class="fragment"><code style="text-transform: none;">commons-crypto</code></li>
+                <li class="fragment"><code style="text-transform: none;">commons-csv</code></li>
+                <li class="fragment"><code style="text-transform: none;">commons-imaging</code></li>
+                <li class="fragment"><code style="text-transform: none;">commons-rng</code></li>
+                <li class="fragment"><code style="text-transform: none;">commons-validator</code></li>
+                <li class="fragment">...</li>
+            </ul>
         </section>
 
         <section>
