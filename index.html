@@ -117,6 +117,16 @@
         </section>
 
         <section>
+            <h3>First example. <code style="text-transform: none;">StringUtils</code></h3>
+            <pre class="fragment"><code class="java">if (string != null && !"".equals(string)) {
+    ...
+}</code></pre>
+            <pre class="fragment"><code class="java">if (!StringUtils.isEmpty(string)) {
+    ...
+}</code></pre>
+        </section>
+
+        <section>
             <h3>Beyond <code style="text-transform: none;">StringUtils</code></h3>
             <p>
                 <span class="fragment"><code>ArrayUtils</code>,</span>
@@ -137,21 +147,8 @@
                 <span class="fragment"><code>RandomUtils</code>,</span>
                 <span class="fragment"><code>SerializationUtils</code>,</span>
                 <span class="fragment"><code>SystemUtils</code>,</span>
-                <span class="fragment"><code>ThreadUtils</code>,</span>
+                <span class="fragment"><code>ThreadUtils</code></span>
             </p>
-        </section>
-
-        <section>
-            <h3>First example. <code style="text-transform: none;">StringUtils</code></h3>
-            <pre class="fragment"><code class="java">if (string != null && string != "") {
-    ...
-}</code></pre>
-            <pre class="fragment"><code class="java">if (string != null && !"".equals(string)) {
-    ...
-}</code></pre>
-            <pre class="fragment"><code class="java">if (!StringUtils.isEmpty(string)) {
-    ...
-}</code></pre>
         </section>
 
         <section>
