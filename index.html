@@ -263,7 +263,7 @@ List&lt;FileItem&gt; items = upload.parseRequest(request);</code></pre>
 
         <section>
             <h3>Defining <code style="text-transform: none;">commons-cli Options</code></h3>
-            <pre class="fragment"><code class="java">Options options = new Options()
+            <pre class="fragment"><code class="java">Options options = new Options();
 options.addOption("h", "help", false, "display the help");
 options.addOption(withArgName("file")
                  .hasArg()
@@ -278,7 +278,14 @@ if(line.hasOption("help")) {
   new HelpFormatter().printHelp("cool-cli", options);
 } else if(line.hasOption("file")) {
   this.logfile = line.getOptionValue("logfile");
+  System.out.println("Writing to logfile: " + this.logfile);
+  ...
 }</code></pre>
+        </section>
+
+        <section>
+            <h3>Result?</h3>
+            <img src="images/cli-output.png" />
         </section>
 
         <section>
