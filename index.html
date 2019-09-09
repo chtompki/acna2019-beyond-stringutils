@@ -142,6 +142,19 @@
         </section>
 
         <section>
+            <h3>First example. <code style="text-transform: none;">StringUtils</code></h3>
+            <pre class="fragment"><code class="java">if (string != null && string != "") {
+    ...
+}</code></pre>
+            <pre class="fragment"><code class="java">if (string != null && !"".equals(string)) {
+    ...
+}</code></pre>
+            <pre class="fragment"><code class="java">if (!StringUtils.isEmpty(string)) {
+    ...
+}</code></pre>
+        </section>
+
+        <section>
             <h3><code style="text-transform: none;">SystemUtils</code></h3>
             <ul>
                 <li class="fragment">
